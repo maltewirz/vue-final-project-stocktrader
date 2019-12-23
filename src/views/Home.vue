@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Trade or View your Portofolio</h2>
+    <p>You may Save & Load your Data</p>
+    <p>Click on 'End Day' to begin a new Day!</p>
+    <h3>Your Funds: </h3>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
   }
 }
 </script>
