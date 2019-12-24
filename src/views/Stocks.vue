@@ -30,15 +30,16 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    cards: [
-      { title: 'BMW', price: 10, flex: 6 },
-      { title: 'Google', price: 10, flex: 6 },
-      { title: 'Apple', price: 10, flex: 6 },
-      { title: 'Twitter', price: 10, flex: 6 }
-    ]
-  })
+<script lang="ts">
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Action, Getter } from 'vuex-class'
+
+@Component
+export default class Stocks extends Vue {
+  @Getter('getCards') public cards:any;
+
+  private endDay () {
+    console.log('day ended')
+  }
 }
 </script>
