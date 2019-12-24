@@ -1,10 +1,16 @@
 <template>
   <div>
-    <v-toolbar>
-      <v-toolbar-title>Stock Trader</v-toolbar-title>
+    <v-toolbar class="ma-2">
       <v-toolbar-items>
-        <v-btn text>Portfolio</v-btn>
-        <v-btn text>Stocks</v-btn>
+        <router-link to="/" tag="button" exact>
+          <v-btn text>Stock Trader</v-btn>
+        </router-link>
+        <router-link to="/" tag="button" exact>
+          <v-btn text>Portfolio</v-btn>
+        </router-link>
+        <router-link to="/stocks" tag="button" exact>
+          <v-btn text>Stocks</v-btn>
+        </router-link>
       </v-toolbar-items>
 
       <v-spacer></v-spacer>
