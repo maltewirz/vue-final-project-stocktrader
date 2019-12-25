@@ -37,9 +37,5 @@ import { Action, Getter } from 'vuex-class'
 @Component
 export default class Stocks extends Vue {
   @Getter('getCards') public cards:any;
-
-  private endDay () {
-    console.log('day ended')
-  }
 }
 </script>

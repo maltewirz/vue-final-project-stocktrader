@@ -16,7 +16,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text>End Day</v-btn>
+        <v-btn text @click="randomizeStockPrices">End Day</v-btn>
         <v-btn text>Save/Load</v-btn>
         <v-btn text>Funds: </v-btn>
       </v-toolbar-items>
@@ -25,12 +25,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Action, Getter } from 'vuex-class'
 
-export default Vue.extend({
-  name: 'Header',
-
-  data: () => ({
-  })
-})
+@Component
+export default class Header extends Vue {
+  @Action('randomizeStockPrices') randomizeStockPrices:any
+}
 </script>

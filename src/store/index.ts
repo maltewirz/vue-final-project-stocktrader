@@ -13,8 +13,16 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    randomizeStockPrices: state => {
+      state.cards.forEach(element => {
+        element.price = Math.floor(Math.random() * 100)
+      })
+    }
   },
   actions: {
+    randomizeStockPrices: ({ commit }) => {
+      commit('randomizeStockPrices')
+    }
   },
   modules: {
   },
