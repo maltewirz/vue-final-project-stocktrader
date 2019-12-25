@@ -6,10 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     stocks: [
-      { id: 1, title: 'BMW', price: 10, flex: 6 },
-      { id: 2, title: 'Google', price: 10, flex: 6 },
-      { id: 3, title: 'Apple', price: 10, flex: 6 },
-      { id: 4, title: 'Twitter', price: 10, flex: 6 }
+      { id: 1, title: 'BMW', price: 10, quantity: null },
+      { id: 2, title: 'Google', price: 10, quantity: null },
+      { id: 3, title: 'Apple', price: 10, quantity: null },
+      { id: 4, title: 'Twitter', price: 10, quantity: null }
     ],
     portfolio: [],
     funds: 10000
@@ -20,21 +20,25 @@ export default new Vuex.Store({
         stock.price = Math.floor(Math.random() * 100)
       })
     },
-    buyStockAction: (state, id) => {
+    buyStockAction: (state, boughtStock) => {
+      // console.log('siub', boughtStock)
+      let buyingPrice = 0
       state.stocks.forEach(stock => {
-        if (stock.id === id) {
-          state.portfolio.push(stock)
-          state.funds = state.funds - stock.price
+        if (stock.id === boughtStock.id) {
+          stock.quantity = Number(stock.quantity) + Number(boughtStock.quantity)
+          buyingPrice = Number(stock.price) * Number(boughtStock.quantity)
         }
       })
+      state.funds = state.funds - buyingPrice
     }
   },
   actions: {
     randomizeStockPrices: ({ commit }) => {
       commit('randomizeStockPrices')
     },
-    buyStockAction: ({ commit }, id) => {
-      commit('buyStockAction', id)
+    buyStockAction: ({ commit }, boughtStock) => {
+      // console.log(boughtStock)
+      commit('buyStockAction', boughtStock)
     }
   },
   modules: {

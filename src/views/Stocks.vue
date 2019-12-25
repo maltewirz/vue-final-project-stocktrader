@@ -5,27 +5,11 @@
   >
     <v-container fluid>
       <v-row dense>
-        <v-col
+        <Stock
           v-for="stock in stocks"
+          :stock="stock"
           :key="stock.title"
-          :cols="stock.flex"
-        >
-          <v-card>
-              <v-card-title v-text="stock.title"></v-card-title>
-              <v-card-text v-text="stock.price"></v-card-text>
-              <v-card-actions>
-                <v-text-field
-                  label="Solo"
-                  placeholder="Quantity"
-                  solo
-                  v-model="quantity"
-                ></v-text-field>
-                <v-btn text @click="buyStock(stock.id)">
-                  Buy
-                </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
+        />
       </v-row>
     </v-container>
   </v-card>
@@ -34,18 +18,23 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
+import Stock from './Stock.vue'
 
-@Component
+@Component({
+  components: {
+    Stock
+  }
+})
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
   @Getter('getFunds') funds:any // check later if funds sufficient
-  @Action('buyStockAction') buyStockAction:any
+  // @Action('buyStockAction') buyStockAction:any
 
-  private quantity: number = 0;
+  // private quantity: number = 0;
 
-  private buyStock (id:number) {
-    console.log('wauntity', this.quantity)
-    this.buyStockAction(id)
-  }
+  // private buyStock (id:number) {
+  //   console.log('wauntity', this.quantity)
+  //   this.buyStockAction(id)
+  // }
 }
 </script>
