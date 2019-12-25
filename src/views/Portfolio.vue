@@ -18,9 +18,8 @@
                   label="Solo"
                   placeholder="Quantity"
                   solo
-                  v-model="quantity"
                 ></v-text-field>
-                <v-btn text @click="buyStock(stock.id)">
+                <v-btn text>
                   Buy
                 </v-btn>
             </v-card-actions>
@@ -38,14 +37,5 @@ import { Action, Getter } from 'vuex-class'
 @Component
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
-  @Getter('getFunds') funds:any // check later if funds sufficient
-  @Action('buyStockAction') buyStockAction:any
-
-  private quantity: number = 0;
-
-  private buyStock (id:number) {
-    console.log('wauntity', this.quantity)
-    this.buyStockAction(id)
-  }
 }
 </script>

@@ -5,7 +5,7 @@
         <router-link to="/" tag="button" exact>
           <v-btn text>Stock Trader</v-btn>
         </router-link>
-        <router-link to="/" tag="button" exact>
+        <router-link to="/portfolio" tag="button" exact>
           <v-btn text>Portfolio</v-btn>
         </router-link>
         <router-link to="/stocks" tag="button" exact>
@@ -18,7 +18,7 @@
       <v-toolbar-items>
         <v-btn text @click="randomizeStockPrices">End Day</v-btn>
         <v-btn text>Save/Load</v-btn>
-        <v-btn text>Funds: </v-btn>
+        <v-btn text>Funds: {{ funds }} $</v-btn>
       </v-toolbar-items>
     </v-toolbar>
   </div>
@@ -31,5 +31,6 @@ import { Action, Getter } from 'vuex-class'
 @Component
 export default class Header extends Vue {
   @Action('randomizeStockPrices') randomizeStockPrices:any
+  @Getter('getFunds') funds:any
 }
 </script>
