@@ -28,6 +28,5 @@ import Stock from './Stock.vue'
 })
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
-  @Getter('getFunds') funds:any // check later if funds sufficient
 }
 </script>

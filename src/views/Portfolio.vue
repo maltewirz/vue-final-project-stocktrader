@@ -28,8 +28,6 @@ import Stock from './Stock.vue'
 })
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
-  @Getter('getFunds') funds:any // check later if funds sufficient
-
   get stocksWithQuantity () {
     return this.stocks.filter(stock => stock.quantity > 0
     )

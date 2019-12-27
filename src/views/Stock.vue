@@ -3,6 +3,7 @@
     <v-card>
         <v-card-title v-text="stock.title"></v-card-title>
         <v-card-text v-text="stock.price"></v-card-text>
+        <div v-if="type === 'portfolio'">Quantity: {{stock.quantity}}</div>
         <v-card-actions>
           <v-text-field
             label="Solo"
