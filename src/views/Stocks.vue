@@ -9,6 +9,7 @@
           v-for="stock in stocks"
           :stock="stock"
           :key="stock.title"
+          type="stocks"
         />
       </v-row>
     </v-container>
@@ -28,13 +29,5 @@ import Stock from './Stock.vue'
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
   @Getter('getFunds') funds:any // check later if funds sufficient
-  // @Action('buyStockAction') buyStockAction:any
-
-  // private quantity: number = 0;
-
-  // private buyStock (id:number) {
-  //   console.log('wauntity', this.quantity)
-  //   this.buyStockAction(id)
-  // }
 }
 </script>
