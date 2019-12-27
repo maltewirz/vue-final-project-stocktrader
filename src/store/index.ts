@@ -24,21 +24,29 @@ export default new Vuex.Store({
       let buyingPrice = 0
       state.stocks.forEach(stock => {
         if (stock.id === boughtStock.id) {
-          stock.quantity = Number(stock.quantity) + Number(boughtStock.quantity)
           buyingPrice = Number(stock.price) * Number(boughtStock.quantity)
+          if (state.funds > buyingPrice) {
+            stock.quantity = Number(stock.quantity) + Number(boughtStock.quantity)
+            state.funds = state.funds - buyingPrice
+          } else {
+            alert('Funds not sufficient!')
+          }
         }
       })
-      state.funds = state.funds - buyingPrice
     },
     sellStockAction: (state, soldStock) => {
       let sellingPrice = 0
       state.stocks.forEach(stock => {
         if (stock.id === soldStock.id) {
-          stock.quantity = Number(stock.quantity) - Number(soldStock.quantity)
-          sellingPrice = Number(stock.price) * Number(soldStock.quantity)
+          if (stock.quantity >= Number(soldStock.quantity)) {
+            stock.quantity = Number(stock.quantity) - Number(soldStock.quantity)
+            sellingPrice = Number(stock.price) * Number(soldStock.quantity)
+            state.funds = state.funds + sellingPrice
+          } else {
+            alert(`You can only sell up to ${stock.quantity} stocks`)
+          }
         }
       })
-      state.funds = state.funds + sellingPrice
     }
   },
   actions: {
