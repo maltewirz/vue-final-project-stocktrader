@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import { firebaseConfig } from '../../firebaseConfig.js'
+firebase.initializeApp(firebaseConfig)
+let db = firebase.firestore()
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -47,6 +54,10 @@ export default new Vuex.Store({
           }
         }
       })
+    },
+    saveInVuex: (state, stocksFromDB) => {
+      state.stocks = stocksFromDB.stocks
+      state.funds = stocksFromDB.funds
     }
   },
   actions: {
@@ -58,6 +69,28 @@ export default new Vuex.Store({
     },
     sellStockAction: ({ commit }, soldStock) => {
       commit('sellStockAction', soldStock)
+    },
+    saveToDatabase: state => {
+      db.collection('stocks')
+        .doc('state')
+        .set(state.state)
+        .then(function () {
+          alert('State saved successfully')
+        })
+        .catch(function (error) {
+          console.error('Error adding document: ', error)
+        })
+    },
+    loadFromDatabase: ({ commit }) => {
+      db.collection('stocks')
+        .doc('state')
+        .get()
+        .then(querySnapshot => {
+          commit('saveInVuex', querySnapshot.data())
+        })
+        .catch(function (error) {
+          console.error('Error adding document: ', error)
+        })
     }
   },
   modules: {

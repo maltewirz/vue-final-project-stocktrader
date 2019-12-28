@@ -17,7 +17,8 @@
 
       <v-toolbar-items>
         <v-btn text @click="randomizeStockPrices">End Day</v-btn>
-        <v-btn text>Save/Load</v-btn>
+        <v-btn text @click="saveToDatabase">Save/Load</v-btn>
+        <v-btn text @click="loadFromDatabase">Save/Load</v-btn>
         <v-btn text>Funds: {{ funds }} $</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -31,6 +32,8 @@ import { Action, Getter } from 'vuex-class'
 @Component
 export default class Header extends Vue {
   @Action('randomizeStockPrices') randomizeStockPrices:any
+  @Action('saveToDatabase') saveToDatabase:any
+  @Action('loadFromDatabase') loadFromDatabase:any
   @Getter('getFunds') funds:any
 }
 </script>
