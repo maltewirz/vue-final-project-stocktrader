@@ -87,6 +87,7 @@ export default new Vuex.Store({
         .get()
         .then(querySnapshot => {
           commit('saveInVuex', querySnapshot.data())
+          alert('State loaded successfully')
         })
         .catch(function (error) {
           console.error('Error adding document: ', error)
