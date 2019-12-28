@@ -19,7 +19,7 @@
         <v-btn text @click="randomizeStockPrices">End Day</v-btn>
         <v-btn text @click="saveToDatabase">Save</v-btn>
         <v-btn text @click="loadFromDatabase">Load</v-btn>
-        <v-btn text>Funds: {{ funds }} $</v-btn>
+        <v-btn text>Funds: {{ funds | currency }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
   </div>

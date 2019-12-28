@@ -13,11 +13,17 @@
             solo
             v-model="quantity"
           ></v-text-field>
-          <v-btn text @click="buyStock(stock.id)" v-if="type === 'stocks'">
-            Buy
+          <v-btn text
+            @click="buyStock(stock.id)"
+            v-if="type === 'stocks'"
+            :disabled="quantity <= 0">
+              Buy
           </v-btn>
-          <v-btn text @click="sellStock(stock.id)" v-if="type === 'portfolio'">
-            Sell
+          <v-btn text
+            @click="sellStock(stock.id)"
+            v-if="type === 'portfolio'"
+            :disabled="quantity <= 0">
+              Sell
           </v-btn>
       </v-card-actions>
     </v-card>
