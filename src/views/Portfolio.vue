@@ -4,7 +4,8 @@
     max-width="500"
   >
     <v-container fluid>
-      <v-row dense>
+      <v-row dense >
+        <div v-if="stocksWithQuantity.length == 0">Buy stocks to view them here.</div>
         <Stock
           v-for="stock in stocksWithQuantity"
           :stock="stock"
@@ -29,8 +30,7 @@ import Stock from './Stock.vue'
 export default class Stocks extends Vue {
   @Getter('getStocks') public stocks:any;
   get stocksWithQuantity () {
-    return this.stocks.filter(stock => stock.quantity > 0
-    )
+    return this.stocks.filter(stock => stock.quantity > 0)
   }
 }
 </script>

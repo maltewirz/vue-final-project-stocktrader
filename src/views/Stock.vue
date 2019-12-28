@@ -2,8 +2,10 @@
   <v-col cols="6">
     <v-card>
         <v-card-title v-text="stock.title"></v-card-title>
-        <v-card-text v-text="stock.price"></v-card-text>
-        <div v-if="type === 'portfolio'">Quantity: {{stock.quantity}}</div>
+        <v-card-text>
+          <div>Price: {{stock.price}}</div>
+          <div v-if="type === 'portfolio'">Quantity: {{stock.quantity}}</div>
+        </v-card-text>
         <v-card-actions>
           <v-text-field
             label="Solo"
