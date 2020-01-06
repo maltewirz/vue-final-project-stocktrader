@@ -23,6 +23,7 @@ export default new Vuex.Store({
     portfolio: [],
     funds: 10000
   },
+
   mutations: {
     randomizeStockPrices: state => {
       state.stocks.forEach(stock => {
@@ -62,6 +63,7 @@ export default new Vuex.Store({
       state.funds = stocksFromDB.funds
     }
   },
+
   actions: {
     randomizeStockPrices: ({ commit }) => {
       commit('randomizeStockPrices')
@@ -96,8 +98,10 @@ export default new Vuex.Store({
         })
     }
   },
+
   modules: {
   },
+
   getters: {
     getStocks: state => {
       return state.stocks
