@@ -21,16 +21,18 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 import Stock from './Stock.vue'
+import StockType from '../StockType'
 
 @Component({
   components: {
     Stock
   }
 })
+
 export default class Stocks extends Vue {
-  @Getter('getStocks') public stocks:any;
+  @Getter('getStocks') public stocks: StockType[] = [];
   get stocksWithQuantity () {
-    return this.stocks.filter(stock => stock.quantity > 0)
+    return this.stocks.filter((stock: StockType) => stock.quantity > 0)
   }
 }
 </script>

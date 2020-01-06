@@ -4,7 +4,9 @@ import Vuex from 'vuex'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import { firebaseConfig } from '../../firebaseConfig.js'
+import { firebaseConfig } from '../../firebaseConfig'
+import StockType from '@/stockType'
+
 firebase.initializeApp(firebaseConfig)
 let db = firebase.firestore()
 
@@ -29,7 +31,7 @@ export default new Vuex.Store({
     },
     buyStockAction: (state, boughtStock) => {
       let buyingPrice = 0
-      state.stocks.forEach(stock => {
+      state.stocks.forEach((stock: StockType) => {
         if (stock.id === boughtStock.id) {
           buyingPrice = Number(stock.price) * Number(boughtStock.quantity)
           if (state.funds > buyingPrice) {
@@ -43,7 +45,7 @@ export default new Vuex.Store({
     },
     sellStockAction: (state, soldStock) => {
       let sellingPrice = 0
-      state.stocks.forEach(stock => {
+      state.stocks.forEach((stock: StockType) => {
         if (stock.id === soldStock.id) {
           if (stock.quantity >= Number(soldStock.quantity)) {
             stock.quantity = Number(stock.quantity) - Number(soldStock.quantity)

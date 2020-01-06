@@ -15,6 +15,6 @@ import { Action, Getter } from 'vuex-class'
 
 @Component
 export default class Stocks extends Vue {
-  @Getter('getFunds') funds:any
+  @Getter('getFunds') funds: any
 }
 </script>
