@@ -30,7 +30,7 @@ import StockType from '../StockType'
 })
 
 export default class Stocks extends Vue {
-  @Getter('getStocks') public stocks: StockType[] = [];
+  @Getter('getStocks') public stocks: any;
   get stocksWithQuantity () {
     return this.stocks.filter((stock: StockType) => stock.quantity > 0)
   }

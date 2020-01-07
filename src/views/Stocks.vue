@@ -20,6 +20,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 import Stock from './Stock.vue'
+import StockType from '../StockType'
 
 @Component({
   components: {

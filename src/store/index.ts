@@ -5,7 +5,8 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import { firebaseConfig } from '../../firebaseConfig'
-import StockType from '@/stockType'
+import StockType from '../StockType'
+import StateType from '../StateType'
 
 firebase.initializeApp(firebaseConfig)
 let db = firebase.firestore()
@@ -20,17 +21,17 @@ export default new Vuex.Store({
       { id: 3, title: 'Apple', price: 10, quantity: null },
       { id: 4, title: 'Twitter', price: 10, quantity: null }
     ],
-    portfolio: [],
+    test: 'duee',
     funds: 10000
   },
 
   mutations: {
     randomizeStockPrices: state => {
-      state.stocks.forEach(stock => {
+      state.stocks.forEach((stock: StockType) => {
         stock.price = Math.floor(Math.random() * 100)
       })
     },
-    buyStockAction: (state, boughtStock) => {
+    buyStockAction: (state, boughtStock: StockType) => {
       let buyingPrice = 0
       state.stocks.forEach((stock: StockType) => {
         if (stock.id === boughtStock.id) {
@@ -44,7 +45,7 @@ export default new Vuex.Store({
         }
       })
     },
-    sellStockAction: (state, soldStock) => {
+    sellStockAction: (state, soldStock: StockType) => {
       let sellingPrice = 0
       state.stocks.forEach((stock: StockType) => {
         if (stock.id === soldStock.id) {
@@ -58,7 +59,7 @@ export default new Vuex.Store({
         }
       })
     },
-    saveInVuex: (state, stocksFromDB) => {
+    saveInVuex: (state, stocksFromDB: StateType) => {
       state.stocks = stocksFromDB.stocks
       state.funds = stocksFromDB.funds
     }
@@ -68,10 +69,10 @@ export default new Vuex.Store({
     randomizeStockPrices: ({ commit }) => {
       commit('randomizeStockPrices')
     },
-    buyStockAction: ({ commit }, boughtStock) => {
+    buyStockAction: ({ commit }, boughtStock: StockType) => {
       commit('buyStockAction', boughtStock)
     },
-    sellStockAction: ({ commit }, soldStock) => {
+    sellStockAction: ({ commit }, soldStock: StockType) => {
       commit('sellStockAction', soldStock)
     },
     saveToDatabase: state => {
