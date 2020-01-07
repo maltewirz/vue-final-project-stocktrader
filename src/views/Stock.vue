@@ -31,13 +31,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
+import StockType from '../StockType'
 
 @Component
 export default class Stocks extends Vue {
-  @Prop() public stock: any;
-  @Prop() public type: any;
+  @Prop() private stock!: StockType;
+  @Prop() private type!: string;
   @Action('buyStockAction') buyStockAction:any
   @Action('sellStockAction') sellStockAction:any
 

@@ -40,6 +40,6 @@ export default class Header extends Vue {
   @Action('randomizeStockPrices') randomizeStockPrices:any
   @Action('saveToDatabase') saveToDatabase:any
   @Action('loadFromDatabase') loadFromDatabase:any
-  @Getter('getFunds') funds:any
+  @Getter('getFunds') funds!:number
 }
 </script>

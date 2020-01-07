@@ -21,7 +21,6 @@ export default new Vuex.Store({
       { id: 3, title: 'Apple', price: 10, quantity: null },
       { id: 4, title: 'Twitter', price: 10, quantity: null }
     ],
-    test: 'duee',
     funds: 10000
   },
 

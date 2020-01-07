@@ -28,6 +28,6 @@ import StockType from '../StockType'
   }
 })
 export default class Stocks extends Vue {
-  @Getter('getStocks') public stocks:any;
+  @Getter('getStocks') private stocks!: StockType[];
 }
 </script>
