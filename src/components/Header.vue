@@ -11,6 +11,12 @@
         <router-link to="/stocks" tag="button" exact>
           <v-btn text>Stocks</v-btn>
         </router-link>
+        <router-link to="/registration" tag="button" exact>
+          <v-btn text>Registration</v-btn>
+        </router-link>
+        <router-link to="/login" tag="button" exact>
+          <v-btn text>Login</v-btn>
+        </router-link>
       </v-toolbar-items>
 
       <v-spacer></v-spacer>
