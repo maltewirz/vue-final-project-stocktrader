@@ -75,8 +75,9 @@ export default new Vuex.Store({
       commit('sellStockAction', soldStock)
     },
     saveToDatabase: state => {
+      let Uuid = firebase.auth().currentUser.uid
       db.collection('stocks')
-        .doc('state')
+        .doc(Uuid)
         .set(state.state)
         .then(function () {
           alert('State saved successfully')
@@ -86,8 +87,9 @@ export default new Vuex.Store({
         })
     },
     loadFromDatabase: ({ commit }) => {
+      let Uuid = firebase.auth().currentUser.uid
       db.collection('stocks')
-        .doc('state')
+        .doc(Uuid)
         .get()
         .then(querySnapshot => {
           commit('saveInVuex', querySnapshot.data())
